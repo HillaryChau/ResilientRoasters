@@ -1,3 +1,6 @@
+const ObjectId = require('mongodb').ObjectId;
+
+
 module.exports = function(app, passport, db) {
 
 // normal routes ===============================================================
@@ -9,11 +12,11 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('notes').find().toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
-            messages: result
+            notes : result
           })
         })
     });
@@ -27,30 +30,33 @@ module.exports = function(app, passport, db) {
 // message board routes ===============================================================
 
     app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+      db.collection('notes').save({to: req.body.to, from: req.body.from, note: req.body.note, heart: 1}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
       })
     })
 
-    app.put('/messages', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+    app.put('/messages', (req, res) => {//this is refering to the route that we refer to when we fetch
+      console.log("THIS IS THE REQ BODY",req.body.heart)
+      db.collection('notes') //this is not the route, this is the referring to the collection called messages on mongo
+      .findOneAndUpdate({ _id: ObjectId(req.body._id)}, {
         $set: {
-          thumbUp:req.body.thumbUp + 1
+        heart: Number(req.body.heart) + 1
         }
       }, {
         sort: {_id: -1},
         upsert: true
-      }, (err, result) => {
+      }, {},
+      (err, result) => {
         if (err) return res.send(err)
-        res.send(result)
+        console.log(result)
+        res.redirect('/profile')
       })
     })
 
     app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
+      db.collection('notes').findOneAndDelete({_id: ObjectId(req.body._id)}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })
