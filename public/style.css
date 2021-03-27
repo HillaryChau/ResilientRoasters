@@ -1,8 +1,25 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
-  text-align: center;
+  color: white;
+  background-color: lightpink;
+
 }
 img{
   height: 200px;
+}
+
+h1{
+  text-align: center;
+}
+
+.text-area{
+  width: 70%;
+  padding-bottom: 200px;
+}
+
+.new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Love Notes</title>
+  <title>Not So Secret Love Notes</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
@@ -12,32 +12,15 @@
   <div class="container">
 
     <div class="page-header text-center">
-      <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+      <h1><span class="fa fa-heart"></span> Not So Secret Love Notes <span class="fa fa-heart"></span></h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
 
       <!-- LOCAL INFORMATION -->
-      <div class="col-sm-6">
-        <div class="well">
-          <h3><span class="fa fa-user"></span> Local</h3>
 
-          <% if (user.local.email) { %>
-          <p>
-            <strong>id</strong>: <%= user._id %><br>
-            <strong>email</strong>: <%= user.local.email %><br>
-            <strong>password</strong>: <%= user.local.password %>
-          </p>
-
-          <a href="/unlink/local" class="btn btn-default">Unlink</a>
-          <% } else { %>
-          <a href="/connect/local" class="btn btn-default">Connect Local</a>
-          <% } %>
-
-        </div>
-      </div>
-      <div class="col-sm-6">
+      <div class="text-center">
         <h3>Messages</h3>
         <ul class="messages">
           <% for(var i=0; i<notes.length; i++) {%>
@@ -52,18 +35,19 @@
           <% } %>
         </ul>
 
+      <div class="text-center">
         <h2>Add a message</h2>
         <% if (user.local.email) { %>
         <form action="/messages" method="POST">
           <input type="text" value="<%= user.local.email %>" name="from">
           <input type="text" value="" name="to" placeholder="To: Crush's Name">
-          <input type="text" placeholder="message" name="note">
+          <p><input  class="text-area" type="text" placeholder="Please write your love note here" name="note"></p>
           <button type="submit">Submit</button>
         </form>
       </div>
       <% } %>
-
     </div>
+  </div>
 
     <script src="main.js"></script>
 

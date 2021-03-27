@@ -44,7 +44,7 @@ module.exports = function (app, passport, db) {
     try {
       //this is refering to the route that we refer to when we fetch
       console.log('THIS IS THE REQ BODY', req.body.heart);
-      await db
+       await db
         .collection('notes') //this is not the route, this is the referring to the collection called messages on mongo
         .findOneAndUpdate(
           { _id: ObjectId(req.body._id) },
