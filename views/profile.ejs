@@ -39,8 +39,10 @@
         <h2>Add a message</h2>
         <% if (user.local.email) { %>
         <form action="/messages" method="POST">
+          <div class="tofrom">
           <input type="text" value="<%= user.local.email %>" name="from">
           <input type="text" value="" name="to" placeholder="To: Crush's Name">
+        </div>
           <p><input  class="text-area" type="text" placeholder="Please write your love note here" name="note"></p>
           <button type="submit">Submit</button>
         </form>

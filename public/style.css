@@ -23,3 +23,20 @@ h1{
   align-items: center;
   justify-content: center;
 }
+
+.tofrom{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.messages{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message{
+  width: 30%;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 5px;
+}
