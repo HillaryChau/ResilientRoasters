@@ -1,25 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Love Notes</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-
-    <div class="jumbotron text-center">
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron text-center">
         <h1>Love Notes</h1>
-        <img src="img/heart.gif" alt="heart">
+        <img src="img/heart.gif" alt="heart" />
 
         <p>Login or Signup:</p>
 
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span>Signup</a>
+        <a href="/login" class="btn btn-default"
+          ><span class="fa fa-user"></span>Login</a
+        >
+        <a href="/signup" class="btn btn-default"
+          ><span class="fa fa-user"></span>Signup</a
+        >
+      </div>
 
+      <div class="coffee-order-center">
+        <h2>Make a coffee</h2>
+        <form action="/orders" method="POST">
+          <label for="">barista</label>
+          <input type="text" placeholder="barista name" name="barista" />
+          <label for="">customer</label>
+          <input
+            type="text"
+            value=""
+            name="customer"
+            placeholder="Customer Name"
+          />
+          <fieldset id="drink"> /*fieldset allows us to have multiple options*/ 
+            <input type="radio" value="kopi" name="drink" checked />
+            <label for="">kopi</label>
+            <input type="radio" value="tea" name="drink" />
+            <label for="">tea</label>
+            <input type="radio" value="water" name="drink" />
+            <label for="">water</label>
+          </fieldset>
+          <fieldset id="size">
+            <input type="radio" value="small" name="size" checked />
+            <label for="">small</label>
+            <input type="radio" value="medium" name="size" />
+            <label for="">medium</label>
+            <input type="radio" value="large" name="size" />
+            <label for="">large</label>
+          </fieldset>
+          <fieldset id="milk">
+            <input type="radio" value="skim" name="milk" checked />
+            <label for="">skim</label>
+            <input type="radio" value="regular" name="milk" />
+            <label for="">regular</label>
+            <input type="radio" value="oat" name="milk" />
+            <label for="">oat</label>
+          </fieldset>
+          <fieldset id="sweetener">
+            <input type="radio" value="honey" name="sweetener" checked />
+            <label for="">honey</label>
+            <input type="radio" value="regular" name="sweetener" />
+            <label for="">regular</label>
+            <input type="radio" value="maple" name="sweetener-type" />
+            <label for="">maple</label>
+          </fieldset>
+          <fieldset id="temperature">
+            <input type="radio" value="hot" name="temperature" checked />
+            <label for="">hot</label>
+            <input type="radio" value="cold" name="temperature" />
+            <label for="">cold</label>
+          </fieldset>
+          <input
+            class="text-area"
+            type="text"
+            placeholder="Custom orders"
+            name="note"
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
-
-</div>
-</body>
+  </body>
 </html>

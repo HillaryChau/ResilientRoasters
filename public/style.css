@@ -1,42 +1,29 @@
-body{
-  padding-top:80px;
-  word-wrap:break-word;
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
   color: white;
   background-color: lightpink;
-
 }
-img{
+
+img {
   height: 200px;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
-.text-area{
-  width: 70%;
-  padding-bottom: 200px;
+.order {
+  padding: 5px;
+  margin: 3px;
+  border: 1px solid black;
 }
 
-.new {
+.columns {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.tofrom{
-  display: flex;
-  justify-content: flex-start;
-}
-
-.messages{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.message{
-  width: 30%;
-  border: 2px solid black;
-  padding: 5px;
-  margin: 5px;
+.hidden {
+  display: none;
 }

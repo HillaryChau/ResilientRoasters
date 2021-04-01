@@ -1,4 +1,4 @@
-const ObjectId = require('mongodb').ObjectId;
+const ObjectId = require('mongodb').ObjectId;  // finding records (records = mongodb objects) with a specific id//
 
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
@@ -10,13 +10,18 @@ module.exports = function (app, passport, db) {
 
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function (req, res) {
-    db.collection('notes')
+    db.collection('orders')
       .find()
       .toArray((err, result) => {
         if (err) return console.log(err);
+
+        const pendingOrders = result.filter(({ pending }) => pending);  // results is all of the orders, this filters if pending key is true //
+        const completedOrders = result.filter(({ completed }) => completed);
+
         res.render('profile.ejs', {
           user: req.user,
-          notes: result,
+          pendingOrders,
+          completedOrders,
         });
       });
   });
@@ -29,9 +34,31 @@ module.exports = function (app, passport, db) {
 
   // message board routes ===============================================================
 
-  app.post('/messages', (req, res) => {
-    db.collection('notes').save(
-      { to: req.body.to, from: req.body.from, note: req.body.note, heart: 1 },
+  app.post('/orders', (req, res) => {
+    const {
+      barista,  //these are all the keys made//
+      customer,
+      drink,
+      milk,
+      sweetener,
+      temperature,
+      note,
+      size,
+    } = req.body;
+    
+    db.collection('orders').save(
+      {
+        barista,
+        customer,
+        drink,
+        milk,
+        sweetener,
+        temperature,
+        note,
+        size,
+        pending: true,
+        completed: false,
+      },
       (err, result) => {
         if (err) return console.log(err);
         console.log('saved to database');
@@ -40,20 +67,18 @@ module.exports = function (app, passport, db) {
     );
   });
 
-  app.put('/messages', async (req, res) => {
+  app.put('/orders', async (req, res) => {
     try {
-      //this is refering to the route that we refer to when we fetch
-      console.log('THIS IS THE REQ BODY', req.body.heart);
-       await db
-        .collection('notes') //this is not the route, this is the referring to the collection called messages on mongo
-        .findOneAndUpdate(
-          { _id: ObjectId(req.body._id) },
-          {
-            $set: {
-              heart: Number(req.body.heart) + 1,
-            },
+      const { pending, completed, _id } = req.body;
+      await db.collection('orders').findOneAndUpdate(
+        { _id: ObjectId(_id) },
+        {
+          $set: {
+            pending,
+            completed,
           },
-        );
+        },
+      );
     } catch (e) {
       console.error(e);
     }
@@ -61,8 +86,8 @@ module.exports = function (app, passport, db) {
     res.redirect(303, '/profile');
   });
 
-  app.delete('/messages', (req, res) => {
-    db.collection('notes').findOneAndDelete(
+  app.delete('/orders', (req, res) => {
+    db.collection('orders').findOneAndDelete(
       { _id: ObjectId(req.body._id) },
       (err, result) => {
         if (err) return res.send(500, err);
@@ -88,7 +113,7 @@ module.exports = function (app, passport, db) {
     passport.authenticate('local-login', {
       successRedirect: '/profile', // redirect to the secure profile section
       failureRedirect: '/login', // redirect back to the signup page if there is an error
-      failureFlash: true, // allow flash messages
+      failureFlash: true, // allow flash order
     }),
   );
 
@@ -104,7 +129,7 @@ module.exports = function (app, passport, db) {
     passport.authenticate('local-signup', {
       successRedirect: '/profile', // redirect to the secure profile section
       failureRedirect: '/signup', // redirect back to the signup page if there is an error
-      failureFlash: true, // allow flash messages
+      failureFlash: true, // allow flash order
     }),
   );
 

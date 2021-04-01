@@ -1,58 +1,50 @@
 <!doctype html>
 <html>
-
-<head>
-  <title>Love Notes</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <div class="container">
-
-    <div class="page-header text-center">
-      <h1><span class="fa fa-heart"></span>Love Notes <span class="fa fa-heart"></span></h1>
+   <head>
+      <title>Love orders</title>
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <h1>
+         <span class="fa fa-heart"></span>Barista Page<span class="fa fa-heart"></span>
+      </h1>
       <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
-
-    <div class="row">
-
-      <!-- LOCAL INFORMATION -->
-
-      <div class="text-center">
-        <h3>Messages</h3>
-        <ul class="messages">
-          <% for(var i=0; i<notes.length; i++) {%>
-          <li class="message">
-            <span class="to" data-value="<%= notes[i]._id %>"><%= notes[i].to %></span>
-            <span class="from" data-value="<%= notes[i]._id %>"><%= notes[i].from %></span>
-            <span class="note" data-value="<%= notes[i]._id %>"><%= notes[i].note %></span>
-            <span class="heart" data-value="<%= notes[i]._id %>"><%= notes[i].heart %></span>
-            <button class="fa fa-heart" aria-hidden="true" data-value="<%= notes[i]._id %>">like</button>
-            <span><i class="fa fa-trash" aria-hidden="true" data-value="<%= notes[i]._id %>"></i></span>
-          </li>
-          <% } %>
-        </ul>
-
-      <div class="text-center">
-        <h2>Add a message</h2>
-        <% if (user.local.email) { %>
-        <form action="/messages" method="POST">
-          <div class="tofrom">
-          <input type="text" value="<%= user.local.email %>" name="from">
-          <input type="text" value="" name="to" placeholder="To: Crush's Name">
-        </div>
-          <p><input  class="text-area" type="text" placeholder="Please write your love note here" name="note"></p>
-          <button type="submit">Submit</button>
-        </form>
+      <div class="columns">
+         <div class="pending">
+            <h3>Pending</h3>
+            <% for(var i=0; i<pendingOrders.length; i++) {%>
+            <div class="order">
+               <p class="barista" data-value="<%= pendingOrders[i]._id %>">barista: <%= pendingOrders[i].barista %></p>
+               <p class="customer" data-value="<%= pendingOrders[i]._id %>">customer: <%= pendingOrders[i].customer %></p>
+               <p class="drink" data-value="<%= pendingOrders[i]._id %>">drink: <%= pendingOrders[i]['drink'] %></p>
+               <p class="size" data-value="<%= pendingOrders[i]._id %>">size: <%= pendingOrders[i]['size'] %></p>
+               <p class="milk" data-value="<%= pendingOrders[i]._id %>">milk: <%= pendingOrders[i]['milk'] %></p>
+               <p class="sweetener" data-value="<%= pendingOrders[i]._id %>">sweetener: <%= pendingOrders[i]['sweetener'] %></p>
+               <p class="temperature" data-value="<%= pendingOrders[i]._id %>">temperature: <%= pendingOrders[i]['temperature'] %></p>
+               <p class="note" data-value="<%= pendingOrders[i]._id %>">note: <%= pendingOrders[i]['note'] %></p>
+               <button class="complete-order" data-value="<%= pendingOrders[i]._id %>">Complete Order</button>
+            </div>
+            <% } %>
+         </div>
+         <div class="completed">
+            <h3>Completed</h3>
+            <% for(var i=0; i<completedOrders.length; i++) {%>
+            <div class="order">
+               <p class="barista" data-value="<%= completedOrders[i]._id %>">barista: <%= completedOrders[i].barista %></p>
+               <p class="customer" data-value="<%= completedOrders[i]._id %>">customer: <%= completedOrders[i].customer %></p>
+               <p class="drink" data-value="<%= completedOrders[i]._id %>">drink: <%= completedOrders[i]['drink'] %></p>
+               <p class="size" data-value="<%= completedOrders[i]._id %>">size: <%= completedOrders[i]['size'] %></p>
+               <p class="milk" data-value="<%= completedOrders[i]._id %>">milk: <%= completedOrders[i]['milk'] %></p>
+               <p class="sweetener" data-value="<%= completedOrders[i]._id %>">sweetener: <%= completedOrders[i]['sweetener'] %></p>
+               <p class="temperature" data-value="<%= completedOrders[i]._id %>">temperature: <%= completedOrders[i]['temperature'] %></p>
+               <p class="note" data-value="<%= completedOrders[i]._id %>">note: <%= completedOrders[i]['note'] %></p>
+               <button class="uncomplete-order" data-value="<%= completedOrders[i]._id %>">Uncomplete Order</button>
+            </div>
+            <% } %>
+         </div>
       </div>
-      <% } %>
-    </div>
-  </div>
-
-    <script src="main.js"></script>
-
-</body>
-
+      <script src="main.js"></script>
+   </body>
 </html>

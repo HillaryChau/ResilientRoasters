@@ -1,6 +1,7 @@
 // config/database.js
-module.exports = {
 
-    'url' : 'mongodb+srv://rc:rc@rc21.qlizq.mongodb.net/Love-Notes?retryWrites=true&w=majority',
-    'dbName': 'rc'
+module.exports = {
+  url:
+    'mongodb+srv://demo:demo@roulette.alvha.mongodb.net/Coffee?retryWrites=true&w=majority',
+  dbName: 'Coffee',
 };

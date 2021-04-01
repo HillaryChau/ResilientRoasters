@@ -1,65 +1,45 @@
-var heart = document.getElementsByClassName('fa-heart');
-var submit = document.getElementsByClassName('submit');
-var trash = document.getElementsByClassName('fa-trash');
 
-Array.from(heart).forEach(function (element) {
-  element.addEventListener('click', function () {
-    const _id = event.target.dataset.value;
-    const heartValue = document.querySelector(`.heart[data-value="${_id}"]`)
-      .innerText;
-    fetch('messages', {
-      method: 'put',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        _id: _id,
-        heart: heartValue,
-      }),
-    }).then(function (response) {
-      window.location.reload();
-    });
+//function to get rid of pending order//
+const onCompleteOrder = (event) => {
+  const _id = event.target.dataset.value;
+  fetch('orders', {
+    method: 'put',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      _id: _id,
+      completed: true, //updating the keys for the object which is our drink order//
+      pending: false, //refers back to the keys made in the routes.js page//
+    }),
+  }).then(function () {
+    window.location.reload();
   });
+};
+
+
+//function expression to reverse completed order if there is a mistake//
+const onUncompleteOrder = (event) => {
+  //
+  const _id = event.target.dataset.value;
+  fetch('orders', {
+    method: 'put',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      _id: _id,
+      completed: false,
+      pending: true,
+    }),
+  }).then(function () {
+    window.location.reload();
+  });
+};
+
+
+//Our eventlisteners for the complete and uncomplete orders in the barista page//
+
+document.querySelectorAll('.complete-order').forEach((element) => {
+  element.addEventListener('click', onCompleteOrder);
 });
 
-// Array.from(thumbDown).forEach(function(element) {
-//       element.addEventListener('click', function(){
-//         const name = this.parentNode.parentNode.childNodes[1].innerText
-//         const msg = this.parentNode.parentNode.childNodes[3].innerText
-//         const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-//         fetch('thumbDown', {
-//           method: 'put',
-//           headers: {'Content-Type': 'application/json'},
-//           body: JSON.stringify({
-//             'name': name, //body object is holding these three properties and making it a string
-//             'msg': msg,
-//             'thumbUp':thumbUp //which is the name of our counter, this is the thumbUp property of the body
-//           })
-//         })
-//         .then(response => {
-//           if (response.ok) return response.json()
-//         })
-//         .then(data => {
-//           console.log(data)
-//           window.location.reload(true)
-//         })
-//       });
-// });
-
-Array.from(trash).forEach(function (element) {
-  element.addEventListener('click', function () {
-    const name = this.parentNode.parentNode.childNodes[1].innerText;
-    const msg = this.parentNode.parentNode.childNodes[3].innerText;
-    fetch('notes', {
-      method: 'delete',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        to: to,
-        from: from,
-        msg: msg,
-      }),
-    }).then(function (response) {
-      window.location.reload();
-    });
-  });
+document.querySelectorAll('.uncomplete-order').forEach((element) => {
+  element.addEventListener('click', onUncompleteOrder);
 });
