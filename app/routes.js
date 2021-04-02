@@ -36,7 +36,7 @@ module.exports = function (app, passport, db) {
 
   app.post('/orders', (req, res) => {
     const {
-      barista,  //these are all the keys made//
+      barista,  //the keys are made from matching the name attribute of the input//
       customer,
       drink,
       milk,
@@ -45,7 +45,7 @@ module.exports = function (app, passport, db) {
       note,
       size,
     } = req.body;
-    
+
     db.collection('orders').save(
       {
         barista,
