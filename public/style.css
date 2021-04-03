@@ -2,7 +2,15 @@ body {
   padding-top: 80px;
   word-wrap: break-word;
   color: white;
-  background-color: lightpink;
+  background-color: brown;
+}
+
+.topHead{
+  text-align: center;
+}
+
+.container{
+  display: flex;
 }
 
 img {
@@ -13,10 +21,18 @@ h1 {
   text-align: center;
 }
 
+.pending{
+  margin-right: 10%;
+}
+
+.jumbotron{
+    color: black;
+}
+
 .order {
-  padding: 5px;
-  margin: 3px;
+  padding: 10px;
   border: 1px solid black;
+  width: 100%;
 }
 
 .columns {
@@ -26,4 +42,12 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.coffee-order-center{
+  padding: 5%;
+  margin-left: 2%;
+  background: black;
+  margin-bottom: 30px;
+  border-radius: 6px;
 }
