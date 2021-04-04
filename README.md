@@ -5,12 +5,16 @@ This is a full stack web application with authentication that allows the user to
 ## How It's Made:
 Tech used: HTML, CSS, JavaScript, Node.js, Express.js
 
-<img src="/img/coffee1.PNG" alt="love-notes" style="height: 100px; width:100px;"/>
-<img src="/img/coffee2.PNG" alt="love-notes" style="height: 100px; width:100px;"/>
+
+Please click the link below to interact with it:
+https://hillary-coffee-app.herokuapp.com/
+
+<img src="public/img/coffee1.PNG" alt="coffee1" style="height: 100px; width:100px;"/>
+<img src="public/img/coffee2.PNG" alt="" style="coffee2" height: 100px; width:100px;"/>
 
 ## Lesson Learned:
 
 In this application I learned how fieldset is a great container tool to allow the user to select from multiple radio inputs in a form.
 
 ## Credit
-House Moses 
+House Moses
