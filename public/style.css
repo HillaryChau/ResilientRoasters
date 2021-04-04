@@ -2,7 +2,9 @@ body {
   padding-top: 80px;
   word-wrap: break-word;
   color: white;
-  background-color: brown;
+  background-image: url('img/coffeeb.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .topHead{

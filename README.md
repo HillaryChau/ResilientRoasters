@@ -1,15 +1,16 @@
-##Love Notes Full-Stack
+## Coffee Shop- Resilient Roasters Full-Stack
 
-This is a full stack web application with authentication that allows the user to post not so secret love notes, for the world to see.
+This is a full stack web application with authentication that allows the user to put in drink orders with options for the customers. There is also a login page and barista page that allows the user to access which order of drinks need to be made or have been completed.
 
 ## How It's Made:
-Tech used: HTML, CSS, JavaScript
+Tech used: HTML, CSS, JavaScript, Node.js, Express.js
 
-<img src="/img/love.jpeg" alt="love-notes" style="height: 100px; width:100px;"/>
+<img src="/img/coffee1.PNG" alt="love-notes" style="height: 100px; width:100px;"/>
+<img src="/img/coffee2.PNG" alt="love-notes" style="height: 100px; width:100px;"/>
 
-##Lesson Learned:
+## Lesson Learned:
 
-Super excited that I was able to use the filter method to make the entries private.
+In this application I learned how fieldset is a great container tool to allow the user to select from multiple radio inputs in a form.
 
 ## Credit
-House Moses
+House Moses 
