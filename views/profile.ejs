@@ -19,14 +19,14 @@
             <h3>Pending</h3>
             <% for(var i=0; i<pendingOrders.length; i++) {%>
             <div class="order">
-               <p class="barista">barista: <%= pendingOrders[i].barista %></p>
-               <p class="customer">customer: <%= pendingOrders[i].customer %></p>
-               <p class="drink">drink: <%= pendingOrders[i]['drink'] %></p>
-               <p class="size">size: <%= pendingOrders[i]['size'] %></p>
-               <p class="milk">milk: <%= pendingOrders[i]['milk'] %></p>
-               <p class="sweetener">sweetener: <%= pendingOrders[i]['sweetener'] %></p>
-               <p class="temperature">temperature: <%= pendingOrders[i]['temperature'] %></p>
-               <p class="note">note: <%= pendingOrders[i]['note'] %></p>
+               <p class="barista">Barista: <%= pendingOrders[i].barista %></p>
+               <p class="customer">Customer: <%= pendingOrders[i].customer %></p>
+               <p class="drink">Drink: <%= pendingOrders[i]['drink'] %></p>
+               <p class="size">Size: <%= pendingOrders[i]['size'] %></p>
+               <p class="milk">Milk: <%= pendingOrders[i]['milk'] %></p>
+               <p class="sweetener">Sweetener: <%= pendingOrders[i]['sweetener'] %></p>
+               <p class="temperature">Temperature: <%= pendingOrders[i]['temperature'] %></p>
+               <p class="note">Note: <%= pendingOrders[i]['note'] %></p>
 
                <button class="complete-order" data-value="<%= pendingOrders[i]._id %>">Complete Order</button>
                <button class="delete-order" data-value="<%= pendingOrders[i]._id %>">Delete Order</button>
