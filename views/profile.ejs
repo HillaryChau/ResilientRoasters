@@ -37,14 +37,14 @@
             <h3>Completed</h3>
             <% for(var i=0; i<completedOrders.length; i++) {%>
             <div class="order">
-               <p class="barista">barista: <%= completedOrders[i].barista %></p>
-               <p class="customer">customer: <%= completedOrders[i].customer %></p>
-               <p class="drink">drink: <%= completedOrders[i]['drink'] %></p>
-               <p class="size">size: <%= completedOrders[i]['size'] %></p>
-               <p class="milk">milk: <%= completedOrders[i]['milk'] %></p>
-               <p class="sweetener">sweetener: <%= completedOrders[i]['sweetener'] %></p>
-               <p class="temperature">temperature: <%= completedOrders[i]['temperature'] %></p>
-               <p class="note">note: <%= completedOrders[i]['note'] %></p>
+               <p class="barista">Barista: <%= completedOrders[i].barista %></p>
+               <p class="customer">Customer: <%= completedOrders[i].customer %></p>
+               <p class="drink">Drink: <%= completedOrders[i]['drink'] %></p>
+               <p class="size">Size: <%= completedOrders[i]['size'] %></p>
+               <p class="milk">Milk: <%= completedOrders[i]['milk'] %></p>
+               <p class="sweetener">Sweetener: <%= completedOrders[i]['sweetener'] %></p>
+               <p class="temperature">Temperature: <%= completedOrders[i]['temperature'] %></p>
+               <p class="note">Note: <%= completedOrders[i]['note'] %></p>
                <button class="uncomplete-order" data-value="<%= completedOrders[i]._id %>">Uncomplete Order</button>
                <button class="delete-order" data-value="<%= completedOrders[i]._id %>">Delete Order</button>
             </div>
