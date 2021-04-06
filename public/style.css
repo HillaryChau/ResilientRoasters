@@ -11,6 +11,15 @@ body {
   text-align: center;
 }
 
+.order {
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 100%;
+    background: tan;
+    color: black;
+}
+
 .container{
   display: flex;
 }
