@@ -5,7 +5,6 @@ This is a full stack web application with authentication that allows the user to
 ## How It's Made:
 Tech used: HTML, EJS, CSS, JavaScript, Node.js, Express.js
 
-
 Please click the link below to interact with it:
 https://hillary-coffee-app.herokuapp.com/
 
